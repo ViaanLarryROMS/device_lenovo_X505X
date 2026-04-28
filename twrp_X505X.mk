@@ -13,18 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+ALLOW_MISSING_DEPENDENCIES := true
 
-# This contains the module build definitions for the hardware-specific
-# components for this device.
-#
-# As much as possible, those components should be built unconditionally,
-# with device-specific names to avoid collisions, to avoid device-specific
-# bitrot and build breakages. Building a component unconditionally does
-# *not* include it on all devices, so it is safe even with hardware-specific
-# components.
+# Release name
+PRODUCT_RELEASE_NAME := X505X
 
-LOCAL_PATH := $(call my-dir)
+# inherit the usual stuff...
+$(call inherit-product, build/target/product/aosp_base.mk)
 
-ifneq ($(filter X505X,$(TARGET_DEVICE)),)
-include $(call all-makefiles-under,$(LOCAL_PATH))
-endif
+## Device identifier. This must come after all inclusions
+PRODUCT_NAME := twrp_$(PRODUCT_RELEASE_NAME)
+PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
+PRODUCT_BRAND := Lenovo
+PRODUCT_MODEL := Lenovo TB-X505X
+PRODUCT_MANUFACTURER := LENOVO
