@@ -23,6 +23,8 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
+DEVICE_PATH := device/lenovo/X505X
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -112,7 +114,7 @@ RECOVERY_TOUCHSCREEN_SWAP_XY := true
 RECOVERY_TOUCHSCREEN_FLIP_Y := true
 
 # TWRP specific build flags
-TW_DEVICE_VERSION := th7
+TW_DEVICE_VERSION := X505X
 TW_FRAMERATE := 60
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
@@ -125,4 +127,3 @@ TW_HAS_EDL_MODE := true
 TW_INCLUDE_NTFS_3G := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_OVERRIDE_SYSTEM_PROPS := \ "ro.build.product;ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
-
