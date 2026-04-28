@@ -27,3 +27,18 @@ PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
 PRODUCT_BRAND := Lenovo
 PRODUCT_MODEL := Lenovo TB-X505X
 PRODUCT_MANUFACTURER := LENOVO
+
+# DECRYPTION
+
+# for FBE decryption
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe
+
+# for tzdata
+PRODUCT_PACKAGES += \
+    tzdata_twrp
+
+# Keystore
+PRODUCT_PACKAGES += \
+    android.system.keystore2
