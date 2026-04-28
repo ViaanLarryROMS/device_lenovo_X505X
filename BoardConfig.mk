@@ -37,12 +37,16 @@ TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := msm8937
+TARGET_BOOTLOADER_BOARD_NAME := QC_Reference_Phone
 TARGET_NO_BOOTLOADER := true
 
-# Kernel
-BOARD_KERNEL_IMAGE_NAME := zImage
-TARGET_PREBUILT_KERNEL := device/lenovo/X505F/prebuilt/zImage
+# Kernel - prebuilt (Use Prebuilt)
+TARGET_FORCE_PREBUILT_KERNEL := true
+ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
+BOARD_KERNEL_SEPARATED_DTBO := 
+endif
 
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -94,6 +98,8 @@ TW_EXCLUDE_APEX := true
 TW_INCLUDE_RESETPROP := true
 BOARD_USES_QCOM_FBE_DECRYPTION := true
 TW_INCLUDE_CRYPTO := true
+
+# Prevent Anti Roll Back
 PLATFORM_VERSION := 16.1.0
 PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
@@ -112,7 +118,7 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_EXTRA_LANGUAGES := true
 TW_USE_TOOLBOX := true
-TW_EXCLUDE_TWRPAPP := true
+TW_EXCLUDE_TWRPAPP := false
 TW_EXCLUDE_SUPERSU := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 TW_HAS_EDL_MODE := true
@@ -120,4 +126,15 @@ TW_INCLUDE_NTFS_3G := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_OVERRIDE_SYSTEM_PROPS := \ "ro.build.product;ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
 
+# for FBE decryption
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe
 
+# for tzdata
+PRODUCT_PACKAGES += \
+    tzdata_twrp
+
+# Keystore
+PRODUCT_PACKAGES += \
+    android.system.keystore2
