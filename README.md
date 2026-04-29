@@ -3,22 +3,22 @@
 ## Release info
 This is an unofficial build.  It decrypts data partition.  MTP working.  Install at your own risk.
 
-Build with minimal AOSP TWRP for Android 11.0.
+Build with minimal AOSP TWRP supports Android 10.0 till Android 16.0
 
 ### About Device
 
 ![Lenovo Smart Tab M10 HD](https://static.lenovo.com/ww/campaigns/2019/smarttab/lenovo-smart-tab-gallery-5.jpg "Lenovo Smart Tab M10 HD (TB-X505F)")
 
-Recovery Device Tree for Lenovo Smart Tab M10 HD wifi (TB-X505F)
+Recovery Device Tree for Lenovo Tab M10 HD (TB-X505X)
 ================================================================
 Component   | Specs
 -------:|:-------------------------
 Chipset| Qualcomm Snapdragon 429 (SDM429)
 CPU | ARM Cortex-A53, Quad-Core, 2.0 GHz
 GPU     | Qualcomm Adreno 504, 650 MHz
-Memory  | 2 GB (soldered)
-Shipped Android Version | 8.0 (Oreo), upgrade to 9.0 (Pie)
-Storage | 16 GB (eMPC)
+Memory  | 2/3 GB (soldered)
+Shipped Android Version | 8.0 (Oreo), upgrade to 10.0 (Quince Tart)
+Storage | 16/32 GB (eMMC)
 MicroSD | Up to 256 GB
 Battery | 4850 mAh, Li-Po (non-removable)
 Display | 1280x800 pixels, 10.1"
@@ -34,6 +34,6 @@ To build:
 
 ```
 . build/envsetup.sh
-lunch twrp_X505F-eng
+lunch twrp_X505X-eng
 mka recoveryimage
 ```
